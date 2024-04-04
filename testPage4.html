@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body,
+        html {
+            background: white;
+
+        }
+
+        .resizableRect {
+            background: whitesmoke;
+            width: 250px;
+            height: 350px;
+            position: absolute;
+            border: 3px solid black;
+            top: 400px;
+            left: 400px;
+        }
+
+        /* 
+        
+        .resizableRect.resizers {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #4286f4;
+            box-sizing: border-box;
+        } 
+        .resizableRect .resizers .resizer {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #4286f4;
+            position: absolute;
+        }
+        .resizableRect .resizers .resizer.top-left {
+            left: -5px;
+            top: -5px;
+            cursor: nwse-resize;
+        }
+        
+        .resizableRect .resizers .resizer.top-right {
+            right: -5px;
+            top: -5px;
+            cursor: nesw-resize;
+        }
+        
+        .resizableRect .resizers .resizer.bottom-left {
+            left: -5px;
+            bottom: -5px;
+            cursor: nesw-resize;
+        }
+        
+        .resizableRect .resizers .resizer.bottom-right {
+            right: -5px;
+            bottom: -5px;
+            cursor: nwse-resize;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="resizableRect" class="resizableRect">
+        <!--  //*DnD TP: border's sub-attribute value comprises thickness, border-style and color ChrOdered*/-->
+        <!--<div id="resizableRect" style="border: 3px solid black; width:300px; height:250px; 
+            position:absolute; background-color: lightgray;"> -->
+        <!-- <div id="resizableRect" class="resizableRect"> -->
+        <div class='resizers'>
+        </div>
+    </div>
+    <script>
+        function makeResizableBorder(elementId) {
+            // const element = document.querySelector(div);
+            // const resizers = document.querySelectorAll(div + ' .resizer')
+            const resizableRect = document.getElementById(elementId);
+            const minimum_size = 20;
+            let original_width = 0;
+            let original_height = 0;
+            let original_x = 0;
+            let original_y = 0;
+            let original_mouse_x = 0;
+            let original_mouse_y = 0;
+            // let testClientX = 0;
+            // let testClientY = 0;
+            // let testX = 0;
+            // let testY = 0;
+
+            var isResizing = false;
+            // for (let i = 0; i < resizers.length; i++) 
+
+            resizableRect.addEventListener('mousemove', cursorUpdate);
+
+
+            // {
+            // const currentResizer = resizers[i];
+             resizableRect.addEventListener('mousedown', function0);
+
+             
+            // function addTwoNumbers(x, y) {
+            //     return x + y;
+            // }
+            // let x = 4, y = 6;
+
+            // alert(`The sum of the numbers ${x} and ${y}
+            //  is ${addTwoNumbers(x, y)}`)
+
+            // (e) {
+            //     if (resizeDirectn.profile === dragProfiles.default)
+            //         return;
+            //     isResizing = true;
+            //     e.preventDefault()
+            //     original_width = parseFloat(getComputedStyle(resizableRect, null).getPropertyValue('width').replace('px', ''));
+            //     original_height = parseFloat(getComputedStyle(resizableRect, null).getPropertyValue('height').replace('px', ''));
+            //     original_x = resizableRect.getBoundingClientRect().left;
+            //     original_y = resizableRect.getBoundingClientRect().top;
+            //     original_mouse_x = e.pageX;
+            //     original_mouse_y = e.pageY;
+            //     // testClientX = e.clientX;
+            //     // testClientY = e.clientY;
+            //     // testX = e.x;
+            //     // testY = e.y;
+            //     window.addEventListener('mousemove', resize)
+            //     window.addEventListener('mouseup', stopResize)
+            // })
+            function function0(e) {
+                if (resizeDirectn.profile === dragProfiles.default)
+                    return;
+                isResizing = true;
+                e.preventDefault()
+                original_width = parseFloat(getComputedStyle(resizableRect, null).getPropertyValue('width').replace('px', ''));
+                original_height = parseFloat(getComputedStyle(resizableRect, null).getPropertyValue('height').replace('px', ''));
+                original_x = resizableRect.getBoundingClientRect().left;
+                original_y = resizableRect.getBoundingClientRect().top;
+                original_mouse_x = e.pageX;
+                original_mouse_y = e.pageY;
+                // testClientX = e.clientX;
+                // testClientY = e.clientY;
+                // testX = e.x;
+                // testY = e.y;
+                window.addEventListener('mousemove', resize)
+                window.addEventListener('mouseup', stopResize)
+            }
+            function resize(e) {
+                let wi = 0;
+                let hi = 0;
+                switch (resizeDirectn.profile) {
+                    case dragProfiles.north:
+                        //top(north)
+                        hi = original_height - (e.pageY - original_mouse_y)
+                        // hi = hi > minimum_size ? hi : 47;
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                            resizableRect.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.northWest:
+                        //top-left(northWest)
+                        wi = original_width - (e.pageX - original_mouse_x)
+                        hi = original_height - (e.pageY - original_mouse_y)
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                            resizableRect.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+                        }
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                            resizableRect.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.west:
+                        //left(west)
+                        wi = original_width - (e.pageX - original_mouse_x)
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                            resizableRect.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+                        }
+
+                        break;
+                    case dragProfiles.southWest:
+                        //bottom-left(southWest)
+                        hi = original_height + (e.pageY - original_mouse_y)
+                        wi = original_width - (e.pageX - original_mouse_x)
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                        }
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                            resizableRect.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.south:
+                        //bottom(south)
+                        hi = original_height + (e.pageY - original_mouse_y)
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.southEast:
+                        //bottom-right(southEast)
+                        wi = original_width + (e.pageX - original_mouse_x);
+                        hi = original_height + (e.pageY - original_mouse_y)
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                        }
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.east:
+                        //right(east)
+                        wi = original_width + (e.pageX - original_mouse_x)
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                        }
+                        break;
+
+                    case dragProfiles.northEast:
+                        //top-right(northEast)
+                        wi = original_width + (e.pageX - original_mouse_x)
+                        hi = original_height - (e.pageY - original_mouse_y)
+                        if (wi > minimum_size) {
+                            resizableRect.style.width = wi + 'px'
+                        }
+                        if (hi > minimum_size) {
+                            resizableRect.style.height = hi + 'px'
+                            resizableRect.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+                        }
+                        break;
+
+                    default:
+                        {
+
+                        }
+
+
+                }
+
+                function setLimit(minMax, x, y) {
+                    switch (resizeDirectn.sizeBounds.minMax) {
+                        case minMax.max:
+
+                            break;
+
+                        case minMax.min:
+
+                            break;
+
+                        case minMax.minLeft:
+
+                            break;
+
+                        case minMax.minTop:
+
+                            break;
+                    }
+
+                }
+            }
+
+
+            function stopResize() {
+                window.removeEventListener('mousemove', resize)
+                isResizing = false;
+            }
+            
+            const dragProfiles = {
+                north: 'top',
+                northWest: 'top-left',
+                west: 'left',
+                southWest: 'bottom-left',
+                south: 'bottom',
+                southEast: 'bottom-right',
+                east: 'right',
+                northEast: 'top-right',
+                default: 'none'
+            }
+            const minMax = {
+                min: 'min',
+                max: 'max',
+                minLeft: 'minLeft',
+                minTop: 'minTop'
+            }
+            //min,max,min-x,min-y,(max = max-x and maxy. min = when both are min)
+            const sizeBounds = {
+                xBound: 0,
+                yBound: 0,
+                minMax: minMax.max
+                // min: 'min', ///DnD: minLeft and minTop
+                // max: 'max', ///DnD: maxLeft and maxTop
+                // minLeft: 'minLeft',
+                // minTop: 'minTop'
+            }
+            const axis = {
+                x: 0,
+                y: 0
+            }
+            const resizeDirectn = {
+                cursor: 'default',
+                profile: dragProfiles.default,
+                startAxis: axis,
+                sizeBounds: sizeBounds
+            }
+
+            ///DnD: This functrion tracts the cursor's 'mousemoves' events on the 
+            /// targetElement and  changes the cursor's image base on which of its
+            ///border it's placed on.
+            function cursorUpdate(e) {
+                let targetElement = e.currentTarget;
+                var rect = targetElement.getBoundingClientRect();
+
+                if (isResizing)
+                    return;
+
+
+                var x = e.clientX;
+                var y = e.clientY;
+
+                let axis = {
+                    x,
+                    y
+                };
+
+                ///DnD: this variable's signature is similar to [sizeBound] and 
+                // will be assigned as such at the close of this function
+                let sizeLimit = {
+                    xBound: rect.bottom - 10,
+                    yBound: rect.right - 10,
+                    minMax: minMax.max
+                };
+                ///DnD: the maximum limit values of sizeLimit's elements has been assigned 
+                ///above and need not be changed except if resize direction requires 
+                ///minimum limit. The following variable should be assigned along with [minMax]
+                ///as required.
+                // xMin = 20;
+                // yMin = 20;
+
+                const margin = 10; // Margin to consider for the edges
+                ///DnD: top-left(nw-resize)
+                if (x < rect.left + margin && y < rect.top + margin) {
+                    resizeDirectn.cursor = 'nw-resize';
+                    resizeDirectn.profile = dragProfiles.northWest;
+                    //DnD: bound for both axis already assigned above.
+                    // sizeLimit.minMax = minMax.max
+                }
+                ///DnD top-right(ne-resize)
+                else if (x > rect.right - margin && y < rect.top + margin) {
+                    resizeDirectn.cursor = 'ne-resize';
+                    resizeDirectn.profile = dragProfiles.northEast
+                    sizeLimit.yBound = sizeLimit.yBound; ///DnD: already assigned above.
+                    // // The x - axis resize should be limited to left border
+                    // sizeLimit.minMax = minMax.minLeft;
+                    // sizeLimit.xBound = xMin;
+
+
+                }
+                /// bottom-left(sw-resize)
+                else if (x < rect.left + margin && y > rect.bottom - margin) {
+                    resizeDirectn.cursor = 'sw-resize';
+                    resizeDirectn.profile = dragProfiles.southWest
+                    //     //sizeLimit.yBound = sizeLimit.yBound;///DnD: already assigned above.
+                    // sizeLimit.minMax = minMax.minTop;
+                    // sizeLimit.yBound = xMin;
+
+                }
+                ///DnD:bottom-right(se-resize)
+                else if (x > rect.right - margin && y > rect.bottom - margin) {
+                    resizeDirectn.cursor = 'se-resize';
+                    resizeDirectn.profile = dragProfiles.southEast
+                    //     ///DnD: South-east requires both axix assign minimum limites
+                    //     //The y-axis resize should be limited to top border
+                    //     //The x-axis resize should be limited to left border
+                    // sizeLimit.minMax = minMax.min;
+                    // sizeLimit.xBound = xMin;
+                    // sizeLimit.yBound = yMin;
+                }
+                ///DnD: left('w-resize)
+                else if (x < rect.left + margin) {
+                    resizeDirectn.cursor = 'w-resize';
+                    resizeDirectn.profile = dragProfiles.west
+                    //DnD: bound for both already assigned above.
+                    // sizeLimit.minMax = minMax.max.
+                }
+                ///DnD: right(e-resize)
+                else if (x > rect.right - margin) {
+                    resizeDirectn.cursor = 'e-resize';
+                    resizeDirectn.profile = dragProfiles.east
+
+                    // //The x-axis resize should be limited to left border
+                    // sizeLimit.minMax = minMax.minLeft;
+                    // sizeLimit.xBound = xMin;
+                }
+                ///DnD: top (n-resize)
+                else if (y < rect.top + margin) {
+                    resizeDirectn.cursor = 'n-resize'; // North
+                    resizeDirectn.profile = dragProfiles.north
+                    //DnD: bound for both already assigned above.
+                    // sizeLimit.minMax = minMax.max.
+                }
+                ///DnD: bottom(s-resize)
+                else if (y > rect.bottom - margin) {
+                    resizeDirectn.cursor = 's-resize';
+                    resizeDirectn.profile = dragProfiles.south;
+                    // //sizeLimit.xBound = sizeLimit.xBound;///DnD: already assigned above.
+                    // sizeLimit.minMax = minMax.minTop;
+                    // sizeLimit.yBound = yMin;
+                }
+                ///DnD: Not on any border
+                else {
+                    resizeDirectn.cursor = 'default';
+                    resizeDirectn.profile = dragProfiles.default
+                }
+                resizeDirectn.startAxis = axis;
+                // resizeDirectn.sizeBounds = sizeLimit;
+                targetElement.style.cursor = resizeDirectn.cursor.toString();
+                // borderProfile.current = dragProfile;
+            }
+        }
+        makeResizableBorder('resizableRect');
+    </script>
+</body>
+
+</html>

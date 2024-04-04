@@ -1,0 +1,81 @@
+<!-- tcpSocketClient.html -->
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+
+<body>
+    <input type="text" id="messageInput" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+    <div id="output"></div>
+
+    <script>
+        const socket = new WebSocket('ws://192.168.43.178:80');
+
+        socket.addEventListener('open', (event) => {
+            console.log('Connection opened');
+        });
+
+        socket.addEventListener('message', (event) => {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML += `<p>${event.data}</p>`;
+        });
+
+        socket.addEventListener('close', (event) => {
+            console.log('Connection closed');
+        });
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = '';
+        }
+
+        class tcpServer {
+            constructor(params) {
+
+
+                const WebSocket = require('ws');
+                const server = new WebSocket.Server({ port: 3001 });
+                server.on('connection',onSocket)
+
+            }
+            onSocket(socket) {
+                console.log('Client connected');
+
+                socket.on('message', (message) => {
+                    console.log(`Received: ${message}`);
+                    // Echo the message back to the client
+                    socket.send(`Server: ${message}`);
+                });
+
+                socket.on('close', () => {
+                    console.log('Client disconnected');
+                });
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!-- tcpSocketClient.html -->
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+
+<body>
+    <input type="text" id="messageInput" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+    <div id="output" style="border:3px solid green; width: 450px; height: 300px;"></div>
+
+    <script>
+        const socket = new WebSocket('ws://192.168.43.178:3000');
+
+        socket.addEventListener('open', (event) => {
+            console.log('Connection opened');
+        });
+
+        socket.addEventListener('message', (event) => {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML += `<p>${event.data}</p>`;
+        });
+
+        socket.addEventListener('close', (event) => {
+            console.log('Connection closed');
+        });
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = '';
+        }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

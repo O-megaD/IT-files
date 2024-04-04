@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #rectangle {
+            border: 7px solid black;
+            width: 300px;
+            height: 400px;
+            position: relative;
+            cursor: default;
+        }
+
+        #coordinatesLabel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="rectangle">
+        <div id="coordinatesLabel">Coordinates: (0, 0)</div>
+    </div>
+
+    <script>
+        const rectangle = document.getElementById('rectangle');
+        const offsetMargins ={
+            left :rectangle.offsetLeft + rectangle.clientLeft,
+            top :rectangle.offsetTop+rectangle.clientTop
+        }
+        const coordinatesLabel = document.getElementById('coordinatesLabel');
+        let isResizing = false;
+        let resizeDirection = '';
+
+
+        rectangle.addEventListener('mousemove', updateCoordinates);
+        rectangle.addEventListener('mousedown', startResize);
+        window.addEventListener('mouseup', stopResize);
+        window.addEventListener('mousemove', handleResize);
+
+        function updateCoordinates(event) {
+            const x1 = event.clientX - offsetMargins.left;
+            const y1 = event.clientY - offsetMargins.top;
+
+            // Update the coordinates label
+            coordinatesLabel.innerText = `Coordinates: (${x1}, ${y1})`;
+
+             const x = event.clientX;
+             const y = event.clientY;
+            // Check if the cursor is at the edges and update cursor style
+            updateCursorStyle(x, y);
+        }
+
+        function startResize(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            resizeDirection = getResizeDirection(x, y);
+            isResizing = true;
+        }
+
+
+        function stopResize() {
+            isResizing = false;
+            resizeDirection = '';
+        }
+
+        function handleResize(event) {
+            if (!isResizing) return;
+
+            const x = event.clientX;
+            const y = event.clientY;
+
+            // Resize the rectangle based on the direction
+            resizeRectangle(x, y);
+        }
+
+        function updateCursorStyle(x, y) {
+            const rect = rectangle.getBoundingClientRect();
+            const margin = 10; // Margin to consider for the edges
+
+            if (x < rect.left + margin && y < rect.top + margin) {
+                rectangle.style.cursor = 'nw-resize'; // Northwest
+            } else if (x > rect.right - margin && y < rect.top + margin) {
+                rectangle.style.cursor = 'ne-resize'; // Northeast
+            } else if (x < rect.left + margin && y > rect.bottom - margin) {
+                rectangle.style.cursor = 'sw-resize'; // Southwest
+            } else if (x > rect.right - margin && y > rect.bottom - margin) {
+                rectangle.style.cursor = 'se-resize'; // Southeast
+            } else if (x < rect.left + margin) {
+                rectangle.style.cursor = 'w-resize'; // West
+            } else if (x > rect.right - margin) {
+                rectangle.style.cursor = 'e-resize'; // East
+            } else if (y < rect.top + margin) {
+                rectangle.style.cursor = 'n-resize'; // North
+            } else if (y > rect.bottom - margin) {
+                rectangle.style.cursor = 's-resize'; // South
+            } else {
+                rectangle.style.cursor = 'default';
+            }
+        }
+
+       
+
+        function getResizeDirection(x, y) {
+            const rect = rectangle.getBoundingClientRect();
+            const margin = 10; // Margin to consider for the edges
+
+            if (x < rect.left + margin && y < rect.top + margin) {
+                return 'nw';
+            } else if (x > rect.right - margin && y < rect.top + margin) {
+                return 'ne';
+            } else if (x < rect.left + margin && y > rect.bottom - margin) {
+                return 'sw';
+            } else if (x > rect.right - margin && y > rect.bottom - margin) {
+                return 'se';
+            } else if (x < rect.left + margin) {
+                return 'w';
+            } else if (x > rect.right - margin) {
+                return 'e';
+            } else if (y < rect.top + margin) {
+                return 'n';
+            } else if (y > rect.bottom - margin) {
+                return 's';
+            } else {
+                return '';
+            }
+        }
+
+        function resizeRectangle(x, y) {
+            const rect = rectangle.getBoundingClientRect();
+            let newWidth = rect.width;
+            let newHeight = rect.height;
+
+            switch (resizeDirection) {
+                case 'nw':
+                    newWidth = rect.right - x;
+                    newHeight = rect.bottom - y;
+                    break;
+                case 'ne':
+                    newWidth = x - rect.left;
+                    newHeight = rect.bottom - y;
+                    break;
+                case 'sw':
+                    newWidth = rect.right - x;
+                    newHeight = y - rect.top;
+                    break;
+                case 'se':
+                    newWidth = x - rect.left;
+                    newHeight = y - rect.top;
+                    break;
+                case 'w':
+                    newWidth = rect.right - x;
+                    break;
+                case 'e':
+                    newWidth = x - rect.left;
+                    break;
+                case 'n':
+                    newHeight = rect.bottom - y;
+                    break;
+                case 's':
+                    newHeight = y - rect.top;
+                    break;
+            }
+
+            // Set new width and height
+            rectangle.style.width = `${newWidth}px`;
+            rectangle.style.height = `${newHeight}px`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!-- ChatGPT-Query: Detailed compliance with  the following instructions is required:
+Devise in C# a functional TcpClient server that handles message forwarding for  html WebSocket  Clients on it's subnet. It will appends timestamp to each message forwarded and revert delivery status to the sending client. The server will broadcast  messages that start with "BC:" to all client workstations otherwise, messages must indicate the ip of the target workstation to which the messages is to be exclusively sent. 
+The workstation's webpage  will have  a message board that displays the log of all messages sent and received messages. It will be followed by a user message input box, which in turn,  is followed by a send button and a broadcast checkbox. 
+When checked, sent messages will have a leading "BC:" added and the button's caption will change from "Send" to "Broadcast". 
+Take into consideration the appropriate responde to client's Handshake data and when decoding client messages at the server, make necessary allowance for WebSocket masking. -->
+<!-- ChatGPT-Response: This HTML page establishes a WebSocket connection to the C# TcpClient server running on ws://localhost:8888. It provides an input box for typing messages, a button to send messages, and a checkbox for broadcasting messages. When
+a message is sent, it is encoded using the WebSocket protocol and sent to the server. Messages received from the server are decoded and displayed on the webpage. When the broadcast checkbox is checked, messages sent from the client will be prefixed with
+"BC:", indicating that they should be broadcasted to all connected clients by the server. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+    <style>
+        .msg-sent {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+        }
+        
+        .msg-recieved {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="epSetting">
+        <input type="text" id="newIP">
+        <input type="text" id="newPort">
+        <button id="btnSettings">settings</button>
+    </div>
+    <hr>
+    <div id="messages" class="msg-sent" style="border: 4px solid darkgrey; max-width: 500px; min-width: 300px; min-height: 500px;"></div>
+    <hr>
+    <input type="text" id="messageInput" width="auto" placeholder="Type a message...">
+    <br>
+    <div>
+        <input type="checkbox" id="broadcastCheckbox">B/C</input>
+        <button id="sendButton">Send</button>
+    </div>
+    <script>
+        ///DnD Js Class: Socket connection Management
+        class socketMgt {
+            constructor(ipAddr, portNo) {
+                const endPoint = {
+                    ip: ipAddr,
+                    port: portNo
+                }
+                this.wsEp = endPoint
+                this.webConnector = null; //this.resetConnection(endPoint);
+
+                this.ConnectState
+                    // this.resetConnector = resetConnection;
+            }
+            resetConnection(ipEp) {
+                if (!ipEp)
+                    ipEp = this.wsEp;
+
+                const wsConst = 'ws://';
+                let wsStr = wsConst + ipEp.ip + ':' + ipEp.port;
+                let webSkt = new WebSocket(wsStr);
+
+                webSkt.addEventListener('online', function() {
+                    // Code to execute when the network connection is established
+                    console.log('Network connection is back online');
+                });
+
+                webSkt.addEventListener('offline', function() {
+                    // Code to execute when the network connection is lost
+                    console.log('Network connection is lost');
+
+                });
+
+                webSkt.onclose = function(event) {
+                    const message = event.code;
+                    if (event.code === 1006 && webSkt.readyState === 3) {
+                        webSkt.status = connectStatus.noNetwork;
+                    }
+                    addMessageToUI(message);
+                }
+
+                webSkt.onopen = function(event) {
+                    const message = event.data;
+                    addMessageToUI(message);
+                }
+                this.webConnector = webSkt;
+                // return webSkt;
+            }
+
+        }
+    </script>
+
+    <script>
+        const inputElement = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const messagesContainer = document.getElementById('messages');
+        ///DnD Enum Example: Devised by making js object immutable
+        document.getElementById('btnSettings').addEventListener('click', function(event) {
+            const settingDlg = document.createElement('dialog')
+        })
+        const connectStatus = Object.freeze({
+            ///DnD: precede with 'is_'
+            unconnected: 'unconnected',
+            connected: 'connected',
+            restarted: 'restarted',
+            accessDenied: 'denied_access',
+            disconnected: 'disconnected',
+            ///DnD preced with 'has'
+            transactError: '_transact_error',
+            connectError: '_connect_error',
+            noNetwork: '_no_network',
+        });
+
+        const socketState = {
+            status: connectStatus.unconnected
+        };
+
+        var ipAddr = '192.168.43.178';
+        myIp = ipAddr + ':';
+        var portNo = '80';
+        var webConnection = null;
+        // const socket = new WebSocket('ws://192.168.43.81:80');
+        const wsConst = 'ws://'; // + myIp + portNo
+        // const webConnector = {
+        //     webSocket: null,
+        //     socketState: connectStatus.unconnected
+        // };
+
+        const webConnector = new socketMgt(ipAddr, portNo);
+
+        // document.addEventListener('readystatechange', function(e) {
+        window.addEventListener('load', function(e) {
+            // readystatechange
+            if (e.returnValue !== true)
+                return;
+
+            // socket = new socketMgr(ipAddr, portNo);
+
+            webConnector.resetConnection();
+            webConnection = webConnector.webConnector;
+            webConnection.onopen = function(event) {
+                console.log('WebSocket connection established.');
+            };
+
+            webConnection.onmessage = function(event) {
+                const message = event.data;
+                // const decodedMessage = decodeWebSocketMessage(message);
+                // addMessageToUI(decodedMessage);
+                addMessageToUI(message);
+            };
+
+
+        });
+
+
+        sendButton.addEventListener('click', function() {
+            // socketState.status = connectStatus.connected;
+            while (webConnection === null || webConnection.readyState !== 1) {
+                alert('app is offline');
+                return;
+            }
+            const message = inputElement.value;
+            if (message.trim() == '') return;
+            // const broadcastCheckbox = document.getElementById('broadcastCheckbox');
+            // const isBroadcast = broadcastCheckbox.checked;
+            let msg = (broadcastCheckbox.checked ? 'BC:' : myIp) + message;
+            // const encodedMessage = encodeWebSocketMessage(isBroadcast ? 'BC:' + message : message);
+            // webConnection.send(encodedMessage);
+            webConnection.send(msg);
+            sendButton.innerText = 'Send'
+            broadcastCheckbox.checked = false;
+            inputElement.value = '';
+        });
+        broadcastCheckbox.addEventListener('click', (event) => {
+            sendButton.innerText = broadcastCheckbox.checked ?
+                'Broadcast' : 'Send'
+        })
+
+        function addMessageToUI(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messagesContainer.appendChild(messageElement);
+        }
+
+        function decodeWebSocketMessage(data) {
+            const length = data[1];
+            const decodedMessage = new Uint8Array(length);
+            for (let i = 0; i < length; i++) {
+                decodedMessage[i] = data[i + 2];
+            }
+            return new TextDecoder().decode(decodedMessage);
+        }
+
+        function encodeWebSocketMessage(message) {
+            const length = message.length;
+            const header = new Uint8Array(2);
+            header[0] = 0x81; // Final fragment, Text data
+            header[1] = length;
+            const encodedMessage = new Uint8Array(length + 2);
+            encodedMessage.set(header, 0);
+            encodedMessage.set(new TextEncoder().encode(message), 2);
+            return encodedMessage;
+        }
+
+
+        // /**/
+    </script>
+</body>
+
+</html>

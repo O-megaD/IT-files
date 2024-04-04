@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.7.0/math.js"></script> -->
+</head>
+
+<body>
+
+    <!-- <p>cart quantity</p>
+    <button id="show">show quantity</button>
+    <button id="add">add to cart</button>
+    <button id="n2">+2</button>
+    <button id="n3">+3</button>
+    <button id="reset">reset cart</button>
+ -->
+
+    <p>
+        <button id="n1">1</button>
+        <button id="n2">2</button>
+        <button id="n3">3</button>
+        <button id="plus">+</button>
+        <button id="clr">clear</button>
+    </p>
+    <p>
+        <button id="n4">4</button>
+        <button id="n5">5</button>
+        <button id="n6">6</button>
+        <button id="minus">-</button>
+    </p>
+    <p>
+        <button id="n7">7</button>
+        <button id="n8">8</button>
+        <button id="n9">9</button>
+        <button id="divi">/</button>
+
+    </p>
+    <p>
+        <button id="pt">.</button>
+        <button id="n0">0</button>
+        <button id="mult">x</button>
+        <button id="equal">=</button>
+    </p>
+
+    <!-- rock papper scissors -->
+    <!-- <p>rock paper scissors</p>
+
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+    <button id="reset">reset score</button> -->
+
+
+
+
+
+    <script>
+        // console.log("my name is: "+"drex")
+
+        // console.log("total cost: "+"$"+(5+3))
+
+        // console.log(`total cost: $${(5+3)}`)
+
+        // alert(`total cost: $${(5+3)}`)
+
+
+        // var shows = document.getElementById("show")
+        // var add = document.getElementById("add")
+        // var n2 = document.getElementById("n2")
+        // var n3 = document.getElementById("n3")
+        // var reset = document.getElementById("reset")
+
+        // let cq = 0
+
+        // add.addEventListener("click", adQuant)
+        // n2.addEventListener("click", adTwo)
+        // n3.addEventListener("click",adthree)
+        // reset.addEventListener("click",reseter)
+        // shows.addEventListener("click", shQuant)
+
+
+
+        // function adQuant() {
+        //     cq = cq + 1
+        //     console.log("cart quantity: " + cq)
+        //     return cq
+        // }
+
+        // function adTwo() {
+        //     cq = cq + 2
+        //     console.log("cart quantity: " + cq)
+        //     return cq
+        // }
+
+        // function adthree() {
+        //     cq = cq + 3
+        //     console.log("cart quantity: " + cq)
+        //     return cq
+        // }
+
+        // function reseter(){
+        //     cq=0
+        //     console.log("cart has been reset")
+        //     console.log("cart quantity: "+cq)
+        //     return cq
+        // }
+
+        // function shQuant() {
+        //     console.log("cart quantity: " + cq)
+        // }
+
+
+
+
+
+        // var n1 = document.getElementById("n1")
+        // var n2 = document.getElementById("n2")
+        // var n3 = document.getElementById("n3")
+        // var equal = document.getElementById("equal")
+        // var plus = document.getElementById("plus")
+        // let calc = ""
+        // //let num1=""; let num2="";  let num3=""
+        // //let plus = " + "
+
+        // n1.addEventListener("click", () => {
+        //     calc += "1"
+        //     console.log(calc)
+        //     return calc
+        // })
+
+        // n2.addEventListener("click", () => {
+        //     calc += "2"
+        //     console.log(calc)
+        //     //return calc
+        // })
+
+        // n3.addEventListener("click", () => {
+        //     calc += "3"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // plus.addEventListener("click", () => {
+        //     calc += "+"
+        //     console.log(calc)
+        // })
+
+
+        // equal.addEventListener("click", () => {
+        //     calc = eval(calc)
+        //     console.log(calc)
+        // })
+
+
+
+        //rock paper scissors
+        //     var rock = document.getElementById("rock")
+        //     var paper = document.getElementById("paper")
+        //     var scissors = document.getElementById("scissors")
+
+        //     var cmp = Math.random()
+        //     let cmpMove = ""
+        //     let result = ""
+
+
+        //     rock.addEventListener("click", ()=>{
+        //         computerMv() 
+        //         moveResult("rock")
+        //     })
+        //     paper.addEventListener("click", ()=>{
+        //     computerMv()
+        //      moveResult("paper")
+        //     })
+        //     scissors.addEventListener("click", ()=>{ 
+        //     computerMv() 
+        //     moveResult("scissors")
+        // })
+
+        // function computerMv(){
+
+        //         if (cmp >= 0 && cmp < 1 / 3) {
+        //             cmpMove = "rock"; 
+        //         } else if (cmp >= 1 / 3 && cmp < 2 / 3) {
+        //             cmpMove = "paper";
+        //         } else if (cmp >= 2 / 3 && cmp < 1) {
+        //             cmpMove = "scissors"; 
+        //         }
+        //     }
+
+        //     function moveResult(player1){
+        //         if(player1==="rock"){
+        //             if(cmpMove==="rock"){
+        //                 result= "tie"
+        //             }else if(cmpMove==="paper"){
+        //                 result="loose"
+        //             }else if(cmpMove==="scissors"){
+        //                 result="win"
+        //             }
+        //         }else if(player1==="paper"){
+        //             if(cmpMove==="rock"){
+        //                 result= "win"
+        //             }else if(cmpMove==="paper"){
+        //                 result="tie"
+        //             }else if(cmpMove==="scissors"){
+        //                 result="loose"
+        //             }
+        //         }else if(player1==="scissors"){
+        //             if(cmpMove==="rock"){
+        //                 result= "loose"
+        //             }else if(cmpMove==="paper"){
+        //                 result="win"
+        //             }else if(cmpMove==="scissors"){
+        //                 result="tie"
+        //             }
+        //         }
+
+        //         // alert("player: "+ player1 +"  | cmp: " + cmpMove + "\n you " + result)
+        //         alert(`player: ${player1} | cmp: ${cmpMove} \n you ${result}`)
+        //     }
+
+
+
+
+
+        //tenary operator
+        // const mad = 0 ? console.log("good") : console.log("bad");
+
+        // false ? console.log("1") : console.log("0")
+
+
+        // //guard operator
+
+        // true && console.log("trip")
+
+        // let mess= true && "fake"
+        // console.log(mess)
+
+        // //default operator
+
+        // let mass= 9 || "fake"
+        // console.log(mass)
+
+
+        //objects
+        // let score = JSON.parse(localStorage.getItem("score"))
+
+        //     if (score === null) {
+        //         score = {
+        //             wins: 0,
+        //             losses: 0,
+        //             ties: 0,
+        //         }
+        //     }
+
+
+
+        // var rock = document.getElementById("rock")
+        // var paper = document.getElementById("paper")
+        // var scissors = document.getElementById("scissors")
+        // var reset= document.getElementById("reset")
+
+
+
+        // let cmpMove = ""
+        // let result = ""
+
+
+
+
+        // rock.addEventListener("click", () => {
+        //     computerMv()
+        //     moveResult("rock")
+        // })
+        // paper.addEventListener("click", () => {
+        //     computerMv()
+        //     moveResult("paper")
+        // })
+        // scissors.addEventListener("click", () => {
+        //     computerMv()
+        //     moveResult("scissors")
+        // })
+        // reset.addEventListener("click",()=>{
+        //     score.wins=0
+        //     score.ties=0
+        //     score.losses=0
+        //     localStorage.removeItem("Score")
+        // })
+
+
+
+
+
+        // function computerMv() {
+        //     let cmp = Math.random()
+
+
+        //     if (cmp >= 0 && cmp < 1 / 3) {
+        //         cmpMove = "rock";
+        //     } else if (cmp >= 1 / 3 && cmp < 2 / 3) {
+        //         cmpMove = "paper";
+        //     } else if (cmp >= 2 / 3 && cmp < 1) {
+        //         cmpMove = "scissors";
+        //     }
+        // }
+
+        // function moveResult(player1) {
+        //     if (player1 === "rock") {
+        //         if (cmpMove === "rock") {
+        //             result = "tie"
+        //         } else if (cmpMove === "paper") {
+        //             result = "loose"
+        //         } else if (cmpMove === "scissors") {
+        //             result = "win"
+        //         }
+        //     } else if (player1 === "paper") {
+        //         if (cmpMove === "rock") {
+        //             result = "win"
+        //         } else if (cmpMove === "paper") {
+        //             result = "tie"
+        //         } else if (cmpMove === "scissors") {
+        //             result = "loose"
+        //         }
+        //     } else if (player1 === "scissors") {
+        //         if (cmpMove === "rock") {
+        //             result = "loose"
+        //         } else if (cmpMove === "paper") {
+        //             result = "win"
+        //         } else if (cmpMove === "scissors") {
+        //             result = "tie"
+        //         }
+        //     }
+
+        //     if(result==="win"){
+        //         score.wins+=1
+        //     }else if(result==="loose"){
+        //         score.losses+=1
+        //     }else if(result==="tie"){
+        //         score.ties+=1
+        //     }
+
+        //     localStorage.setItem("score",JSON.stringify(score))
+
+        //     // alert("player: "+ player1 +"  | cmp: " + cmpMove + "\n you " + result)
+        //     alert(`player: ${player1} | cmp: ${cmpMove} \n you ${result} \n wins: ${score.wins}, ties: ${score.ties} , losses: ${score.losses} `)
+
+
+        // }
+
+
+
+        //objects
+
+        // const product ={
+        //     name:"shirt",
+        //     "time":"nice time",
+        //     rating:{
+        //         stars:4,
+        //         count:8,
+        //     },
+        //     fun: function function1(){
+        //         console.log("func in ob")
+        //     },
+        // };
+
+        // console.log(product.name)
+        // console.log(product["time"])
+        // console.log(product["rating"]["count"])
+
+        // product.fun()
+
+        // //convert javaScript object to JSON
+        // console.log(JSON.stringify(product))
+
+        // const jsonString= JSON.stringify(product)
+        // //convert JSON to javaScript
+        // console.log(JSON.parse(jsonString))
+
+        // //local storage
+        // localStorage.setItem("message", "hey")
+        // console.log(localStorage.getItem("message"))
+
+        //     const obj1={
+        //         message:"xup",
+        //         price:"500"
+        //     }
+
+        //     const obj2=obj1
+
+        //     console.log(obj1.message)
+        //     console.log(obj2.message)
+
+        //    const mess = obj2.message
+        //    const {message,price} = obj2
+        //     console.log(message)
+        //     console.log(price)
+        //     console.log(mess)
+
+        //     const obj3={
+        //        // message: message
+        //         message,
+        //         // method: function func1(){
+        //         //     console.log("method")
+        //         // }
+        //         method(){
+        //             console.log("methane")
+        //         }
+        //     }
+        //     console.log(obj3)
+        //     obj3.method()
+
+
+        //object exercise
+        const bBall = {
+            name: "basketball",
+            price: "$20.95",
+        }
+
+        let price = bBall.price
+        let oPrice = parseFloat(price.replace("$", ""))
+        let nPrice = oPrice + 5
+        let nsPrice = "$" + nPrice.toFixed(2)
+        bBall.price = nsPrice
+
+        bBall["delivery-time"] = "3days"
+        console.log(bBall)
+
+        const snicks = {
+            name: "snickers",
+            price: "$50",
+        }
+
+        const bulb = {
+            name: "bulb",
+            price: "$29",
+        }
+
+        function compare(p1, p2, pn1, pn2) {
+            var num1 = parseFloat(p1.replace("$", ""))
+            var num2 = parseFloat(p2.replace("$", ""))
+
+            if (num1 > num2) {
+                console.log(`${pn1} is more expensive than ${pn2}`)
+            } else {
+                console.log(`${pn2} is more expensive than ${pn1}`)
+            }
+            if (num1 === num2) {
+                console.log(`${pn1} and ${pn2} are the same price`)
+            }
+
+        }
+
+        compare(snicks.price, bulb.price, snicks.name, bulb.name)
+
+
+
+        console.log("hey you".toLowerCase())
+        console.log("hey you".toUpperCase())
+
+        var str = "hey"
+
+
+        function mStrings(st, n) {
+            strn = ""
+            var i = 0;
+            while (i < n) {
+                strn += st
+                i++
+            }
+            return strn
+        }
+
+
+        console.log(`"${mStrings(str, 3)}"`)
+
+
+
+        var n1 = document.getElementById("n1")
+        var n2 = document.getElementById("n2")
+        var n3 = document.getElementById("n3")
+        var n4 = document.getElementById("n4")
+        var n5 = document.getElementById("n5")
+        var n6 = document.getElementById("n6")
+        var n7 = document.getElementById("n7")
+        var n8 = document.getElementById("n8")
+        var n9 = document.getElementById("n9")
+        var n0 = document.getElementById("n0")
+        var plus = document.getElementById("plus")
+        var minus = document.getElementById("minus")
+        var divi = document.getElementById("divi")
+        var clr = document.getElementById("clr")
+        var pt = document.getElementById("pt")
+        var mult = document.getElementById("mult")
+        var equal = document.getElementById("equal")
+
+        let calc = ""
+        //let num1=""; let num2="";  let num3=""
+        //let plus = " + "
+
+        localStorage.getItem("calc")
+
+        n1.addEventListener("click", () => {
+            calc += "1"
+            console.log(calc)
+            return calc
+        })
+
+        n2.addEventListener("click", () => {
+            calc += "2"
+            console.log(calc)
+            //return calc
+        })
+
+        n3.addEventListener("click", () => {
+            calc += "3"
+            console.log(calc)
+            //return cal
+        })
+
+        n4.addEventListener("click", () => {
+            calc += "4"
+            console.log(calc)
+            //return cal
+        })
+
+        n5.addEventListener("click", () => {
+            calc += "5"
+            console.log(calc)
+            //return cal
+        })
+
+        n6.addEventListener("click", () => {
+            calc += "6"
+            console.log(calc)
+            //return cal
+        })
+
+        n7.addEventListener("click", () => {
+            calc += "7"
+            console.log(calc)
+            //return cal
+        })
+
+        n8.addEventListener("click", () => {
+            calc += "8"
+            console.log(calc)
+            //return cal
+        })
+
+        n9.addEventListener("click", () => {
+            calc += "9"
+            console.log(calc)
+            //return cal
+        })
+
+        n0.addEventListener("click", () => {
+            console.log(calc)
+            //return cal
+        })
+
+
+
+        plus.addEventListener("click", () => {
+            calc += ":+"
+            console.log(calc)
+        })
+
+        minus.addEventListener("click", () => {
+            calc += ":-"
+            console.log(calc)
+        })
+
+        divi.addEventListener("click", () => {
+            calc += ":/"
+            console.log(calc)
+        })
+
+        pt.addEventListener("click", () => {
+            calc += "."
+            console.log(calc)
+        })
+
+        clr.addEventListener("click", () => {
+            calc = 0
+            console.log(calc)
+        })
+
+        mult.addEventListener("click", () => {
+            calc += ":*"
+            console.log(calc)
+        })
+
+        localStorage.setItem("calc", calc)
+
+        var calcu = new Function("return 2+2;");
+        console.log(calcu())
+
+        //  var answ= math.evaluate("2+2")        
+        //  console.log(answ)
+        // calc = "8:-65:+47:-65:+89"
+
+
+        equal.addEventListener("click", () => {
+            // calc = eval(calc)
+            alert("Values entered are: "+ calc.replaceAll(':','') )
+            let answer  = evaluate(calc);
+            alert('The answer is: '+ answer)
+            console.log(answer);
+        })
+
+
+            function evaluate(calc) {
+                    // var calcArr = calc.split(':')
+                    let calc1 = calc;
+                    let operand1;
+                let operand2;
+                let operator;
+                let answer = '';
+                while (calc1.length > 0) {
+                    let cutIndex = calc1.indexOf(':');
+                    if (answer.length > 0) {
+                        operand1 = answer
+                    }
+                    else {
+                        operand1 = calc1.slice(0, cutIndex);
+                        calc1 = calc1.slice(cutIndex + 1)
+                    }
+
+                    operator = calc1.slice(0, 1)
+                    calc1 = calc1.slice(1);
+                    cutIndex = calc1.indexOf(':');
+
+                    if (cutIndex > -1) {
+                        operand2 = calc1.slice(0, cutIndex);
+                        calc1 = calc1.slice(cutIndex + 1)
+                    }
+                    else {
+                        operand2 = calc1;
+                        calc1 = "";
+                    }
+                    answer = eval(operator, operand1, operand2);
+
+                }
+
+                return answer;
+            }
+
+        function eval(operator, operand1, operand2) {
+
+                let rsult = 0;
+                switch (operator) {
+                    case '+':
+                        rsult = parseInt(operand1)
+                            + parseInt(operand2);
+                        break;
+                    case '-':
+                        rsult = parseInt(operand1) - parseInt(operand2);
+                        break;
+                    case '*':
+                        rsult = parseInt(operand1) * parseInt(operand2);
+                        break;
+                    case '/':
+                        rsult = parseInt(operand1) / parseInt(operand2);
+                        break;
+                    default:
+                        break;
+                }
+
+                return rsult.toString();
+            }
+
+
+        const mathsOps = {
+            plus: '+',
+            minus: '-',
+            multiply: '*'
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

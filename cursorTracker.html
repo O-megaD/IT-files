@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        #rectangle {
+            border: 3px solid black;
+            width: 400px;
+            height: 300px;
+            position: relative;
+        }
+
+        #coordinatesLabel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div id="coordinatesLabel">Coordinates: (0, 0)</div>
+        <br>
+    <div id="rectangle" onmousemove="updateCoordinates(event)">
+    </div>
+
+    <script>
+
+        const rebox =document.getElementById("rectangle")
+
+        rebox.addEventListener("mouseover",()=>{
+            rebox.style.border="5px solid black"
+        })
+
+        rebox.addEventListener("mouseout",()=>{
+            rebox.style.border="3px solid black"
+        })
+        
+        function updateCoordinates(event) {
+            const x = event.clientX-event.currentTarget.offsetLeft;
+            const y = event.clientY-event.currentTarget.offsetTop;
+
+            document.getElementById('coordinatesLabel').innerText = `Coordinates: (${x}, ${y})`;
+
+           
+
+        }
+    </script>
+</body>
+</html>
