@@ -6,6 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.7.0/math.js"></script> -->
+
+     <style>
+        #cos{
+            display: none;
+        }
+
+        #sub{
+            border: none;
+            background: darkred;
+            color: whitesmoke;
+            padding: 10px 14px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 70px;
+        }
+        body{
+            font-family: Arial;
+        }
+
+        #costInp{
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        #costCalc{
+            padding: 12px 15px;
+            background: darkred;
+            color: whitesmoke;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +52,7 @@
     <button id="reset">reset cart</button>
  -->
 
-    <p>
+<!--     <p>
         <button id="n1">1</button>
         <button id="n2">2</button>
         <button id="n3">3</button>
@@ -43,7 +77,7 @@
         <button id="n0">0</button>
         <button id="mult">x</button>
         <button id="equal">=</button>
-    </p>
+    </p> -->
 
     <!-- rock papper scissors -->
     <!-- <p>rock paper scissors</p>
@@ -52,6 +86,30 @@
     <button id="paper">paper</button>
     <button id="scissors">scissors</button>
     <button id="reset">reset score</button> -->
+
+
+    <p>youtube subscribe button</p>
+    
+    <button id="sub">subscribe</button>
+    
+    
+    
+    <p>rock paper scissors</p>
+    <a href="newJsProExt.html">click here</a>
+
+    <br><br>
+    <br><br>
+
+    <p>amazon shipping calculator</p>
+    <p>orders under $40 = +$10 shipping fee </p>
+    <p>orders over $40 = +$0 shipping fee</p>
+    <p><input type="text" name="" id="costInp" id="keyup" id="keyd" placeholder="cost of order">
+    <button id="costCalc" >calculate</button></p>
+    
+
+    <pi id="cos">cost of shipping: </p>
+
+    
 
 
 
@@ -413,272 +471,377 @@
 
 
         //object exercise
-        const bBall = {
-            name: "basketball",
-            price: "$20.95",
-        }
+        // const bBall = {
+        //     name: "basketball",
+        //     price: "$20.95",
+        // }
 
-        let price = bBall.price
-        let oPrice = parseFloat(price.replace("$", ""))
-        let nPrice = oPrice + 5
-        let nsPrice = "$" + nPrice.toFixed(2)
-        bBall.price = nsPrice
+        // let price = bBall.price
+        // let oPrice = parseFloat(price.replace("$", ""))
+        // let nPrice = oPrice + 5
+        // let nsPrice = "$" + nPrice.toFixed(2)
+        // bBall.price = nsPrice
 
-        bBall["delivery-time"] = "3days"
-        console.log(bBall)
+        // bBall["delivery-time"] = "3days"
+        // console.log(bBall)
 
-        const snicks = {
-            name: "snickers",
-            price: "$50",
-        }
+        // const snicks = {
+        //     name: "snickers",
+        //     price: "$50",
+        // }
 
-        const bulb = {
-            name: "bulb",
-            price: "$29",
-        }
+        // const bulb = {
+        //     name: "bulb",
+        //     price: "$29",
+        // }
 
-        function compare(p1, p2, pn1, pn2) {
-            var num1 = parseFloat(p1.replace("$", ""))
-            var num2 = parseFloat(p2.replace("$", ""))
+        // function compare(p1, p2, pn1, pn2) {
+        //     var num1 = parseFloat(p1.replace("$", ""))
+        //     var num2 = parseFloat(p2.replace("$", ""))
 
-            if (num1 > num2) {
-                console.log(`${pn1} is more expensive than ${pn2}`)
-            } else {
-                console.log(`${pn2} is more expensive than ${pn1}`)
+        //     if (num1 > num2) {
+        //         console.log(`${pn1} is more expensive than ${pn2}`)
+        //     } else {
+        //         console.log(`${pn2} is more expensive than ${pn1}`)
+        //     }
+        //     if (num1 === num2) {
+        //         console.log(`${pn1} and ${pn2} are the same price`)
+        //     }
+
+        // }
+
+        // compare(snicks.price, bulb.price, snicks.name, bulb.name)
+
+
+
+        // console.log("hey you".toLowerCase())
+        // console.log("hey you".toUpperCase())
+
+        // var str = "hey"
+
+
+        // function mStrings(st, n) {
+        //     strn = ""
+        //     var i = 0;
+        //     while (i < n) {
+        //         strn += st
+        //         i++
+        //     }
+        //     return strn
+        // }
+
+
+        // console.log(`"${mStrings(str, 3)}"`)
+
+
+
+        // var n1 = document.getElementById("n1")
+        // var n2 = document.getElementById("n2")
+        // var n3 = document.getElementById("n3")
+        // var n4 = document.getElementById("n4")
+        // var n5 = document.getElementById("n5")
+        // var n6 = document.getElementById("n6")
+        // var n7 = document.getElementById("n7")
+        // var n8 = document.getElementById("n8")
+        // var n9 = document.getElementById("n9")
+        // var n0 = document.getElementById("n0")
+        // var plus = document.getElementById("plus")
+        // var minus = document.getElementById("minus")
+        // var divi = document.getElementById("divi")
+        // var clr = document.getElementById("clr")
+        // var pt = document.getElementById("pt")
+        // var mult = document.getElementById("mult")
+        // var equal = document.getElementById("equal")
+
+        // let calc = ""
+        // //let num1=""; let num2="";  let num3=""
+        // //let plus = " + "
+
+        // localStorage.getItem("calc")
+
+        // n1.addEventListener("click", () => {
+        //     calc += "1"
+        //     console.log(calc)
+        //     return calc
+        // })
+
+        // n2.addEventListener("click", () => {
+        //     calc += "2"
+        //     console.log(calc)
+        //     //return calc
+        // })
+
+        // n3.addEventListener("click", () => {
+        //     calc += "3"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n4.addEventListener("click", () => {
+        //     calc += "4"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n5.addEventListener("click", () => {
+        //     calc += "5"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n6.addEventListener("click", () => {
+        //     calc += "6"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n7.addEventListener("click", () => {
+        //     calc += "7"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n8.addEventListener("click", () => {
+        //     calc += "8"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n9.addEventListener("click", () => {
+        //     calc += "9"
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+        // n0.addEventListener("click", () => {
+        //     console.log(calc)
+        //     //return cal
+        // })
+
+
+
+        // plus.addEventListener("click", () => {
+        //     calc += ":+"
+        //     console.log(calc)
+        // })
+
+        // minus.addEventListener("click", () => {
+        //     calc += ":-"
+        //     console.log(calc)
+        // })
+
+        // divi.addEventListener("click", () => {
+        //     calc += ":/"
+        //     console.log(calc)
+        // })
+
+        // pt.addEventListener("click", () => {
+        //     calc += "."
+        //     console.log(calc)
+        // })
+
+        // clr.addEventListener("click", () => {
+        //     calc = 0
+        //     console.log(calc)
+        // })
+
+        // mult.addEventListener("click", () => {
+        //     calc += ":*"
+        //     console.log(calc)
+        // })
+
+        // localStorage.setItem("calc", calc)
+
+        // var calcu = new Function("return 2+2;");
+        // console.log(calcu())
+
+        // //  var answ= math.evaluate("2+2")        
+        // //  console.log(answ)
+        // // calc = "8:-65:+47:-65:+89"
+
+
+        // equal.addEventListener("click", () => {
+        //     // calc = eval(calc)
+        //     alert("Values entered are: "+ calc.replaceAll(':','') )
+        //     let answer  = evaluate(calc);
+        //     alert('The answer is: '+ answer)
+        //     console.log(answer);
+        // })
+
+
+        //     function evaluate(calc) {
+        //             // var calcArr = calc.split(':')
+        //             let calc1 = calc;
+        //             let operand1;
+        //         let operand2;
+        //         let operator;
+        //         let answer = '';
+        //         while (calc1.length > 0) {
+        //             let cutIndex = calc1.indexOf(':');
+        //             if (answer.length > 0) {
+        //                 operand1 = answer
+        //             }
+        //             else {
+        //                 operand1 = calc1.slice(0, cutIndex);
+        //                 calc1 = calc1.slice(cutIndex + 1)
+        //             }
+
+        //             operator = calc1.slice(0, 1)
+        //             calc1 = calc1.slice(1);
+        //             cutIndex = calc1.indexOf(':');
+
+        //             if (cutIndex > -1) {
+        //                 operand2 = calc1.slice(0, cutIndex);
+        //                 calc1 = calc1.slice(cutIndex + 1)
+        //             }
+        //             else {
+        //                 operand2 = calc1;
+        //                 calc1 = "";
+        //             }
+        //             answer = eval(operator, operand1, operand2);
+
+        //         }
+
+        //         return answer;
+        //     }
+
+        // function eval(operator, operand1, operand2) {
+
+        //         let rsult = 0;
+        //         switch (operator) {
+        //             case '+':
+        //                 rsult = parseInt(operand1)
+        //                     + parseInt(operand2);
+        //                 break;
+        //             case '-':
+        //                 rsult = parseInt(operand1) - parseInt(operand2);
+        //                 break;
+        //             case '*':
+        //                 rsult = parseInt(operand1) * parseInt(operand2);
+        //                 break;
+        //             case '/':
+        //                 rsult = parseInt(operand1) / parseInt(operand2);
+        //                 break;
+        //             default:
+        //                 break;
+        //         }
+
+        //         return rsult.toString();
+        //     }
+
+
+        // const mathsOps = {
+        //     plus: '+',
+        //     minus: '-',
+        //     multiply: '*'
+
+
+        // }
+
+
+         //DOM
+
+        let sub= document.getElementById("sub")
+       
+
+        sub.addEventListener("click",()=>{
+            if(sub.innerText==="subscribe"){
+                sub.innerText="subscribed"
+                sub.style.background="black"
+            }else{
+                sub.innerText="subscribe"
+                sub.style.background="darkred"
             }
-            if (num1 === num2) {
-                console.log(`${pn1} and ${pn2} are the same price`)
-            }
-
-        }
-
-        compare(snicks.price, bulb.price, snicks.name, bulb.name)
-
-
-
-        console.log("hey you".toLowerCase())
-        console.log("hey you".toUpperCase())
-
-        var str = "hey"
-
-
-        function mStrings(st, n) {
-            strn = ""
-            var i = 0;
-            while (i < n) {
-                strn += st
-                i++
-            }
-            return strn
-        }
-
-
-        console.log(`"${mStrings(str, 3)}"`)
-
-
-
-        var n1 = document.getElementById("n1")
-        var n2 = document.getElementById("n2")
-        var n3 = document.getElementById("n3")
-        var n4 = document.getElementById("n4")
-        var n5 = document.getElementById("n5")
-        var n6 = document.getElementById("n6")
-        var n7 = document.getElementById("n7")
-        var n8 = document.getElementById("n8")
-        var n9 = document.getElementById("n9")
-        var n0 = document.getElementById("n0")
-        var plus = document.getElementById("plus")
-        var minus = document.getElementById("minus")
-        var divi = document.getElementById("divi")
-        var clr = document.getElementById("clr")
-        var pt = document.getElementById("pt")
-        var mult = document.getElementById("mult")
-        var equal = document.getElementById("equal")
-
-        let calc = ""
-        //let num1=""; let num2="";  let num3=""
-        //let plus = " + "
-
-        localStorage.getItem("calc")
-
-        n1.addEventListener("click", () => {
-            calc += "1"
-            console.log(calc)
-            return calc
         })
+       
 
-        n2.addEventListener("click", () => {
-            calc += "2"
-            console.log(calc)
-            //return calc
-        })
+        let costInp= document.getElementById("costInp")
+        let costCalc= document.getElementById("costCalc")
+        let cos= document.getElementById("cos")
+        let keyd= document.getElementById("keyd")
+        let keyup= document.getElementById("keyup")
 
-        n3.addEventListener("click", () => {
-            calc += "3"
-            console.log(calc)
-            //return cal
-        })
+        // costInp.addEventListener=("change",(e)=>{
+        //     alert("e.target.value")
+        // })
 
-        n4.addEventListener("click", () => {
-            calc += "4"
-            console.log(calc)
-            //return cal
-        })
+        
 
-        n5.addEventListener("click", () => {
-            calc += "5"
-            console.log(calc)
-            //return cal
-        })
-
-        n6.addEventListener("click", () => {
-            calc += "6"
-            console.log(calc)
-            //return cal
-        })
-
-        n7.addEventListener("click", () => {
-            calc += "7"
-            console.log(calc)
-            //return cal
-        })
-
-        n8.addEventListener("click", () => {
-            calc += "8"
-            console.log(calc)
-            //return cal
-        })
-
-        n9.addEventListener("click", () => {
-            calc += "9"
-            console.log(calc)
-            //return cal
-        })
-
-        n0.addEventListener("click", () => {
-            console.log(calc)
-            //return cal
-        })
+        // costInp.addEventListener("change", (e) => {
+        //         var val = "";
+        //         val += e.target.value
 
 
+                // costCalc.addEventListener("click", (e) => {
 
-        plus.addEventListener("click", () => {
-            calc += ":+"
-            console.log(calc)
-        })
+                    
+                    
+                //     if (cos.style.display = "none" && val < 40.0 ) {
+                //         let valu = new Function(`return ${val}+10`)
+                //         cos.style.display = "block"
+                //         cos.innerText = `cost of shipping: $${valu()}`
+                //     } else if (cos.style.display = "none" && val > 39.99) {
+                //         val
+                //         cos.style.display = "block"
+                //         cos.innerText = `cost of shipping: $${val}`
+                //     } else {
+                //         cos.innerText = `incorrect input`
+                //     }
+                // })
 
-        minus.addEventListener("click", () => {
-            calc += ":-"
-            console.log(calc)
-        })
+            //     keyd.addEventListener("keydown",(e)=>{
 
-        divi.addEventListener("click", () => {
-            calc += ":/"
-            console.log(calc)
-        })
+            //         if(e.key==="Enter"){                    
+            //         if (cos.style.display = "none" && val < 40.0 ) {
+            //             let valu = new Function(`return ${val}+10`)
+            //             cos.style.display = "block"
+            //             cos.innerText = `cost of shipping: $${valu()}`
+            //         } else if (cos.style.display = "none" && val > 39.99) {
+            //             val
+            //             cos.style.display = "block"
+            //             cos.innerText = `cost of shipping: $${val}`
+            //         } else {
+            //             cos.innerText = `incorrect input`
+            //         }
+            //     }
+            // })
 
-        pt.addEventListener("click", () => {
-            calc += "."
-            console.log(calc)
-        })
+                
 
-        clr.addEventListener("click", () => {
-            calc = 0
-            console.log(calc)
-        })
+            // })
+            
+            
 
-        mult.addEventListener("click", () => {
-            calc += ":*"
-            console.log(calc)
-        })
-
-        localStorage.setItem("calc", calc)
-
-        var calcu = new Function("return 2+2;");
-        console.log(calcu())
-
-        //  var answ= math.evaluate("2+2")        
-        //  console.log(answ)
-        // calc = "8:-65:+47:-65:+89"
-
-
-        equal.addEventListener("click", () => {
-            // calc = eval(calc)
-            alert("Values entered are: "+ calc.replaceAll(':','') )
-            let answer  = evaluate(calc);
-            alert('The answer is: '+ answer)
-            console.log(answer);
-        })
-
-
-            function evaluate(calc) {
-                    // var calcArr = calc.split(':')
-                    let calc1 = calc;
-                    let operand1;
-                let operand2;
-                let operator;
-                let answer = '';
-                while (calc1.length > 0) {
-                    let cutIndex = calc1.indexOf(':');
-                    if (answer.length > 0) {
-                        operand1 = answer
-                    }
-                    else {
-                        operand1 = calc1.slice(0, cutIndex);
-                        calc1 = calc1.slice(cutIndex + 1)
-                    }
-
-                    operator = calc1.slice(0, 1)
-                    calc1 = calc1.slice(1);
-                    cutIndex = calc1.indexOf(':');
-
-                    if (cutIndex > -1) {
-                        operand2 = calc1.slice(0, cutIndex);
-                        calc1 = calc1.slice(cutIndex + 1)
-                    }
-                    else {
-                        operand2 = calc1;
-                        calc1 = "";
-                    }
-                    answer = eval(operator, operand1, operand2);
-
+            costCalc.addEventListener("click",calculater)
+            costInp.addEventListener("keydown",(e)=>{
+                //console.log(event.key)
+                if(e.key==="Enter"){
+                    calculater()
                 }
+            })
 
-                return answer;
-            }
+            
 
-        function eval(operator, operand1, operand2) {
+            function calculater() {
+                    let val="";
+                    val += costInp.value
+                    // let vindex=val.indexOf(".")
+                    // let sliv=val.slice(0,vindex)
+                    // console.log(vindex)
+                    // console.log(sliv)
 
-                let rsult = 0;
-                switch (operator) {
-                    case '+':
-                        rsult = parseInt(operand1)
-                            + parseInt(operand2);
-                        break;
-                    case '-':
-                        rsult = parseInt(operand1) - parseInt(operand2);
-                        break;
-                    case '*':
-                        rsult = parseInt(operand1) * parseInt(operand2);
-                        break;
-                    case '/':
-                        rsult = parseInt(operand1) / parseInt(operand2);
-                        break;
-                    default:
-                        break;
+                        if (cos.style.display = "none" && val < 40.0 ) {
+                        let valu = new Function(`return ${val}+10`)
+                        cos.style.display = "block"
+                        cos.innerText = `cost of shipping: $${valu()}`
+                    } else if (cos.style.display = "none" && val > 39.99) {
+                        val
+                        cos.style.display = "block"
+                        cos.innerText = `cost of shipping: $${val}`
+                    } else {
+                        cos.innerText = `incorrect input`
+                    }
                 }
-
-                return rsult.toString();
-            }
-
-
-        const mathsOps = {
-            plus: '+',
-            minus: '-',
-            multiply: '*'
-
-
-        }
 
 
 
