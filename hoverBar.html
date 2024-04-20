@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+    <style>
+        body {
+            background: bisque;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 100vh;
+        }
+
+        ul {
+            position: relative;
+            transform: rotate(-35deg) skew(20deg, 5deg);
+        }
+
+        .list-item {
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(39, 167, 243, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: #fff;
+            text-align: center;
+            height: 2.5em;
+            width: 4em;
+            vertical-align: middle;
+            line-height: 2.5em;
+            border-bottom: 1px solid #060606;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            box-shadow: -2em 1.5em 0 #333;
+            transition: all 0.25s linear;
+        }
+
+
+
+        .list-item a {
+            color: #fff;
+        }
+
+        .list-item::after {
+            height: 4em;
+            background: #181818;
+            bottom: -2.25em;
+            left: 1.5em;
+            transform: rotate(90deg) skew(0, 45deg);
+        }
+
+        .list-item::before {
+            height: 2.5em;
+            background: #121212;
+            top: 0.25em;
+            left: -0.5em;
+            transform: skewy(-45deg);
+
+        }
+
+        .list-item:hover {
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 110, 66, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: #fffcfb;
+            transform: translate(0.9em, -0.9em);
+            transition: all 0.25s linear;
+            box-shadow: -2em 2em 0 #333;
+        }
+
+        .list-item::before,
+        .list-item:hover::after {
+            transition: all 0.25s linear;
+        }
+
+        .list-item:hover::before {
+            background: #b65234;
+            width: 1em;
+            top: 0.5em;
+            left: -1rem;
+        }
+
+        .list-item:hover:after {
+            background: #b65234;
+            width: 1em;
+            bottom: -2.5em;
+            left: 1em;
+            height: 4em;
+        }
+
+        .list-item::before,
+        .list-item ::after {
+            content: '';
+            position: absolute;
+            transition: all 0.25s linear;
+            width: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li class="list-item"><a href="#"><i class="fas fa-qrcode"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-link"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-eye"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-question-circle"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-cog"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-phone"></i></a></li>
+        <li class="list-item"><a href="#"><i class="fas fa-user"></i></a></li>
+    </ul>
+
+</body>
+
+</html>
